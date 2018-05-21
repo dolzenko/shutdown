@@ -14,7 +14,7 @@ func Example() {
 		Addr:    ":8080",
 		Handler: http.FileServer(http.Dir("/usr/share/doc")),
 	}
-	defer srv.Shutdown(context.Background())
+	defer srv.Shutdown(ctx)
 
 	err := ctx.WaitFor(srv.ListenAndServe)
 	if err != nil && err != http.ErrServerClosed {
